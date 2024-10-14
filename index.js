@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const aboutRoutes = require('./routes/aboutRoutes');
+const homeRoutes = require('./routes/homeRoutes')
 // const servicesRoutes = require('./routes/servicesRoutes');
 // const blogRoutes = require('./routes/blogRoutes');
 
@@ -12,6 +13,8 @@ app.use(express.json());
 
 // Use routes
 app.use('/about', aboutRoutes);
+app.use('/home', homeRoutes);
+
 // app.use('/services', servicesRoutes);
 // app.use('/blogs', blogRoutes);
 
