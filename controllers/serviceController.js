@@ -1,9 +1,9 @@
 const Stack = require('../utils/contentstackClient');
 const contentstack = require('@contentstack/management');
 
-const getAllHomeContent = async (req, res) => {
+const getAllServiceContent = async (req, res) => {
     try {
-      const Query = Stack.ContentType('home_page').Query();
+      const Query = Stack.ContentType('servies').Query();
       Query.toJSON().find()
         .then(result => {
           res.json(result);
@@ -16,8 +16,8 @@ const getAllHomeContent = async (req, res) => {
     }
   };
   
-  // Get a specific "home Us" entry by ID
-  const getHomeContentById = async (req, res) => {
+  // Get a specific "Service Us" entry by ID
+  const getServiceContentById = async (req, res) => {
     try {
       const entryId = req.params.id;
       console.log("Entry ID is:", entryId);  
@@ -29,7 +29,7 @@ const getAllHomeContent = async (req, res) => {
      
       const response = await contentstackClient
         .stack({ api_key: process.env.CONTENTSTACK_API_KEY })
-        .contentType('home_page')  // Use the UID of your Content Type
+        .contentType('servies')  // Use the UID of your Content Type
         .entry(entryId)
         .fetch();
   
@@ -42,7 +42,7 @@ const getAllHomeContent = async (req, res) => {
   };
 
 
-  const createHomeContent = async (req, res) => {
+  const createServiceContent = async (req, res) => {
     try {
      
       // Create a Contentstack client instance
@@ -53,7 +53,7 @@ const getAllHomeContent = async (req, res) => {
       // Create a new entry
       const response = await contentstackClient
         .stack({ api_key: process.env.CONTENTSTACK_API_KEY })
-        .contentType('home_page')  // Use the UID of your Content Type
+        .contentType('servies')  // Use the UID of your Content Type
         .entry()
         .create({ entry: req.body });
   
@@ -64,7 +64,7 @@ const getAllHomeContent = async (req, res) => {
     }
   };
 
-  const updateHomeContent = async (req, res) => {
+  const updateServiceContent = async (req, res) => {
     try {
       const entryId = req.params.id;
     
@@ -75,7 +75,7 @@ const getAllHomeContent = async (req, res) => {
       // Create a new entry
       const response = await contentstackClient
         .stack({ api_key: process.env.CONTENTSTACK_API_KEY })
-        .contentType('home_page')  // Use the UID of your Content Type
+        .contentType('servies')  // Use the UID of your Content Type
         .entry(entryId)
         .update({entry: req.body });
   
@@ -85,7 +85,7 @@ const getAllHomeContent = async (req, res) => {
     }
   };
   
-  const deleteHomeContent = async (req, res) => {
+  const deleteServiceContent = async (req, res) => {
     try {
       const entryId = req.params.id;
       console.log("Entry ID is:", entryId);  
@@ -97,7 +97,7 @@ const getAllHomeContent = async (req, res) => {
      
       const response = await contentstackClient
         .stack({ api_key: process.env.CONTENTSTACK_API_KEY })
-        .contentType('home_page')  // Use the UID of your Content Type
+        .contentType('servies')  // Use the UID of your Content Type
         .entry(entryId)
         .delete();
         res.status(201).json({ message: "Entry deleted successfully", entry: response });
@@ -112,9 +112,9 @@ const getAllHomeContent = async (req, res) => {
   
 
   module.exports = {
-    getAllHomeContent,
-    getHomeContentById,
-    createHomeContent,
-    deleteHomeContent,
-    updateHomeContent
+    getAllServiceContent,
+    getServiceContentById,
+    createServiceContent,
+    deleteServiceContent,
+    updateServiceContent
   };

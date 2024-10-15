@@ -1,7 +1,10 @@
 const express = require('express');
 
-const {  getAllHomeContent,
-    getHomeContentById, } = require('../controllers/homePageController');
+const {    getAllHomeContent,
+    getHomeContentById,
+    createHomeContent,
+    deleteHomeContent,
+    updateHomeContent } = require('../controllers/homePageController');
 
 const router = express.Router();
 
@@ -12,12 +15,12 @@ router.get('/', getAllHomeContent);
 router.get('/:id', getHomeContentById);
 
 // POST a new "About Us" entry
-// router.post('/', createAboutContent);
+router.post('/', createHomeContent);
 
-// // PUT to update a specific "About Us" entry by ID
-// router.put('/:id', updateAboutContent);
+// PUT to update a specific "About Us" entry by ID
+router.put('/:id', updateHomeContent);
 
-// // DELETE a specific "About Us" entry by ID
-// router.delete('/:id', deleteAboutContent);
+// DELETE a specific "About Us" entry by ID
+router.delete('/:id', deleteHomeContent);
 
 module.exports = router;
